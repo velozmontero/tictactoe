@@ -33,10 +33,15 @@
                   text-decoration: none;
                 }
             
+            .center {
+                margin: 0 auto;
+            }
+            
             table {
                 margin: 0 auto;
                 width: 60%;
             }
+            
             td {
                 width: 33%;
                 height: 150px;
@@ -65,14 +70,30 @@
                 <td id="9" name="9"></td>
             </tr>
         </table>
-
+        
+        <div ><button class="btn" id="btn1" name="btn1">Fill grid with X</button></div>
+        <div ><button class="btn" id="btn2" name="btn2">Fill grid with O</button></div>
+        <div ><button class="btn" id="btn3" name="btn3">Start New Game</button></div>
+        
         <script>
+            $('#btn1').on('click', function(){
+                $('td').html('X');
+            }); 
+            
+            $('#btn2').on('click', function(){
+                $('td').html('O');
+            });  
+            
+            $( "#btn3" ).click(function() {
+                     location.reload();
+            });
+            
            var clickCounter= 0;    
            $('td').on('click', function(){
             if (clickCounter % 2 == 0){   
             $(this).html('X');}
             else{
-               $(this).html('0'); 
+               $(this).html('O'); 
             }
             clickCounter++;
             $(this).unbind("click");   
