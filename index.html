@@ -88,6 +88,9 @@
                 if (c<75){
                     $("td").css("color", "white");
                 }
+                if (c>200) {
+                     $("td").css("color", "black");
+                }
             });
             
             $('#btn1').on('click', function(){
@@ -98,12 +101,24 @@
                 $('td').html('O');
             });  
             
-            $( "#btn3" ).click(function() {
-                     location.reload();
+            $( "#btn3" ).click(function resetGrid() {
+                     $("td").unbind("click");
+                     $("td").empty();
+                var clickCounter= 0;    
+                $('td').on('click', function play(){
+                if (clickCounter % 2 == 0){   
+                $(this).html('X');}
+                else{
+                   $(this).html('O'); 
+                }
+                clickCounter++;
+                $(this).unbind("click");   
+                });
+                     
             });
             
            var clickCounter= 0;    
-           $('td').on('click', function(){
+           $('td').on('click', function play(){
             if (clickCounter % 2 == 0){   
             $(this).html('X');}
             else{
