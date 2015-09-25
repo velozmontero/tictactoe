@@ -74,13 +74,30 @@
             </tr>
         </table>
         
+        <center>
+            <h1>Current Mode: <span id="mode">2 Players</span></h1>
+        </center>
+        
         <button class="btn" id="btn1" name="btn1">Fill grid with X</button>
         <button class="btn" id="btn2" name="btn2">Fill grid with O</button>
         <button class="btn" id="btn3" name="btn3">Start New Game</button>
         <button class="btn" id="btn4" name="btn4">Add BG color</button>
+        <button class="btn" id="btn5" name="btn4">Player VS Pc</button>
+        
         
         <script>
-              
+            var clickCounter= 0;
+            
+            $('#btn5').on('click', function toggleMode(){
+                var curMode = $('#mode').html();
+                if (curMode ==="2 Players") {
+                    $('#mode').html("1 Player");
+                }
+                else {
+                    $('#mode').html("2 Players");
+                }
+            });
+            
             $('#btn4').on('click', function(){
                 var c = Math.round(Math.random()*255);
                 var color = "rgb(" + c + "," + c + "," + c + ")";
@@ -102,8 +119,8 @@
             });  
             
             $( "#btn3" ).click(function resetGrid() {
-                     $("td").unbind("click");
-                     $("td").empty();
+                $("td").unbind("click");
+                $("td").empty();
                 var clickCounter= 0;    
                 $('td').on('click', function play(){
                 if (clickCounter % 2 == 0){   
@@ -112,12 +129,17 @@
                    $(this).html('O'); 
                 }
                 clickCounter++;
-                $(this).unbind("click");   
+                $(this).unbind("click");
+                
+                /*if ($("mode").html() === "1 Player") {
+                   if ($("#1").html()=="")
+                       $("#1").html("O");
+                }*/   
                 });
                      
             });
             
-           var clickCounter= 0;    
+               
            $('td').on('click', function play(){
             if (clickCounter % 2 == 0){   
             $(this).html('X');}
