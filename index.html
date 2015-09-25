@@ -5,6 +5,9 @@
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         
         <style>
+            .b-color1 {
+                background-color: antiquewhite;
+            }
             
             .btn {
                   background: #3498db;
@@ -71,11 +74,22 @@
             </tr>
         </table>
         
-        <div ><button class="btn" id="btn1" name="btn1">Fill grid with X</button></div>
-        <div ><button class="btn" id="btn2" name="btn2">Fill grid with O</button></div>
-        <div ><button class="btn" id="btn3" name="btn3">Start New Game</button></div>
+        <button class="btn" id="btn1" name="btn1">Fill grid with X</button>
+        <button class="btn" id="btn2" name="btn2">Fill grid with O</button>
+        <button class="btn" id="btn3" name="btn3">Start New Game</button>
+        <button class="btn" id="btn4" name="btn4">Add BG color</button>
         
         <script>
+              
+            $('#btn4').on('click', function(){
+                var c = Math.round(Math.random()*255);
+                var color = "rgb(" + c + "," + c + "," + c + ")";
+                $('td').css("background-color", color);
+                if (c<75){
+                    $("td").css("color", "white");
+                }
+            });
+            
             $('#btn1').on('click', function(){
                 $('td').html('X');
             }); 
